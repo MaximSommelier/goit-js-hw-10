@@ -10,11 +10,13 @@ const countryList = document.querySelector(".country-list");
 const countryInfo = document.querySelector(".country-info");
 
 document.addEventListener('input', debounce(onSearch,DEBOUNCE_DELAY));
+const nameSearch = evt.target.value.trim();
 
-function onSearch(evt){
+function onSearch(nameSearch){
     evt.preventDefault();
-console.dir(evt.target);
-    // const name = evt.target.value.trim();
+    const {name,capital,population,flags,languages} = evt.currentTarget.elements;
+    
+    console.dir(name);
 }
 
 function fetchCountries(){
