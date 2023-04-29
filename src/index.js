@@ -11,11 +11,12 @@ const countryInfo = document.querySelector(".country-info");
 
 document.addEventListener('input', debounce(onSearch,DEBOUNCE_DELAY));
 const nameSearch = evt.target.value.trim();
+const littleList = document.querySelector('.country-list');
 
 function onSearch(nameSearch){
     evt.preventDefault();
     const {name,capital,population,flags,languages} = evt.currentTarget.elements;
-    
+    fetchCountries().then(data => console.log(data)).catch(error =>console.log(error))
     console.dir(name);
 }
 
@@ -29,6 +30,11 @@ throw new error(resp.statusText)
 })
 };
 
-fetchCountries().then(data => console.log(data)).catch(error =>console.log(error))
+function createLittleMarkup (arr){
+    arr.map(({flags:{svg}, name:{official}}) => `<li><img src="${svg}" alt="flag">
+    <p>${official}</p>
+  </li>`).join('')
+    // const littleMarkup = 
+};
 
 
