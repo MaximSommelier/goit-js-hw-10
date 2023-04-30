@@ -29,7 +29,7 @@ function createLittleMarkup(arr) {
         flags: { svg },
         name: { official },
       }) => `<div class="country">
-      <img src="${svg}" alt="flag of ${official}">
+      <img src="${svg}" width="50" height="25" alt="flag of ${official}">
       <h2 class="country-name">${official}</h2>
     </div>`
     )
@@ -45,9 +45,9 @@ function createFullMarkup(arr) {
           name: { official },
           capital,
           languages,
-          population
+          population,
         }) => `<div class="country">
-        <img src="${svg}" alt="flag of ${svg}">
+        <img src="${svg}" width="50" height="25" alt="flag of ${svg}">
         <h2 class="country-name">${official}</h2>
         <ul>
           <li><span>Capital</span>${capital}</li>
