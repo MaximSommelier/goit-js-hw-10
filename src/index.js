@@ -14,13 +14,13 @@ input.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
 function onSearch(evt) {
   evt.preventDefault();
   const name = evt.target.value.trim();
-//   const { name, capital, population, flags, languages } =
-//     evt.currentTarget.elements;
-  fetchCountries()
+
+  fetchCountries(name)
     .then(data => console.log(data))
     .catch(error => console.log(error));
-  console.dir(name);
+  console.log(name);
 }
+
 
 function createLittleMarkup(arr) {
   const markup = arr
