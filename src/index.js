@@ -16,7 +16,8 @@ function onSearch(evt) {
   const name = evt.target.value.trim();
 
   fetchCountries(name)
-    .then(data => console.log(data))
+    // .then(data => console.log(data))
+    .then(createLittleMarkup)
     .catch(error => console.log(error));
   console.log(name);
 }
@@ -50,9 +51,9 @@ function createFullMarkup(arr) {
         <img src="${svg}" width="50" height="25" alt="flag of ${svg}">
         <h2 class="country-name">${official}</h2>
         <ul>
-          <li><span>Capital</span>${capital}</li>
-          <li><span>Population</span>${population}</li>
-          <li><span>Languages</span>${Object.values(languages)}</li>
+          <li><span>Capital</span>: ${capital}</li>
+          <li><span>Population</span>: ${population}</li>
+          <li><span>Languages</span>: ${Object.values(languages)}</li>
         </ul>
       </div>`
       )
