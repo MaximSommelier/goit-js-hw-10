@@ -43,13 +43,16 @@ function createFullMarkup(arr) {
         ({
           flags: { svg },
           name: { official },
+          capital,
+          languages,
+          population
         }) => `<div class="country">
         <img src="${svg}" alt="flag of ${svg}">
         <h2 class="country-name">${official}</h2>
         <ul>
-          <li><span>Capital</span>${}</li>
-          <li><span>Population</span>${}</li>
-          <li><span>Languages</span>${}</li>
+          <li><span>Capital</span>${capital}</li>
+          <li><span>Population</span>${population}</li>
+          <li><span>Languages</span>${Object.values(languages)}</li>
         </ul>
       </div>`
       )
