@@ -23,21 +23,23 @@ function onSearch(evt) {
 
   fetchCountries(name)
     // .then(data => console.log(data))
-    .then(createShortMarkup)
+    .then(searchCountries)
     .catch(error => console.log(error));
   console.log(name);
 }
 
-// function searchCountries(countries){
-//   const amountCountries = arr.length;
-//   if (amountCountries > 10){
-//     Notiflix.Notify.warning('Too many matches found. Please enter a more specific name.');
-//   } else if (amountCountries === 1) {
-//     return createFullMarkup(countries)
-//   } else if (amountCountries >1 && amountCountries <= 10){
-//     return createShortMarkup(countries)
-//   }
-// }
+function searchCountries(arr){
+  return createShortMarkup (arr)
+  console.log(arr.length);
+  // const amountCountries = arr.length;
+  // if (amountCountries > 10){
+  //   Notiflix.Notify.warning('Too many matches found. Please enter a more specific name.');
+  // } else if (amountCountries === 1) {
+  //   return createFullMarkup(countries)
+  // } else if (amountCountries >1 && amountCountries <= 10){
+  //   return createShortMarkup(countries)
+  // }
+}
 
 function createShortMarkup(arr) {
   const markup = arr
