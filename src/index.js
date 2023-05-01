@@ -23,13 +23,22 @@ function onSearch(evt) {
 
   fetchCountries(name)
     // .then(data => console.log(data))
-    .then(createFullMarkup)
+    .then(searchCountries(arr))
     .catch(error => console.log(error));
   console.log(name);
 }
 
+function searchCountries(arr){
+  const amountCountries = arr.length;
+  if (amountCountries === 1) {
+    return createFullMarkup(countries)
+  } else if (amountCountries >1 && amountCountries <= 10){
+    return createShortMarkup(countries)
+  }
+  Notiflix.Notify.warning('Too many matches found. Please enter a more specific name.');
+}
 
-function createShortMarkup(arr) {
+function createShortMarkup(countries) {
   const markup = arr
     .map(
       ({
@@ -44,7 +53,7 @@ function createShortMarkup(arr) {
     countryList.innerHTML = markup;
 }
 
-function createFullMarkup(arr) {
+function createFullMarkup(countries) {
     const markup = arr
       .map(
         ({
