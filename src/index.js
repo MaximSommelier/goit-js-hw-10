@@ -22,24 +22,23 @@ function onSearch(evt) {
   evt.preventDefault();
 
   fetchCountries(name)
-    // .then(data => console.log(data))
-    .then(searchCountries)
+    .then(data => {
+      if (data.length > 10){
+            Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
+          } else if (data.length === 1) {
+            countryList.innerHTML = "";
+            countryInfo.innerHTML = "";
+            return createFullMarkup(data)
+          } else if (data.length >= 2 && data.length <= 10){
+            countryList.innerHTML = "";
+            countryInfo.innerHTML = "";
+            return createShortMarkup(data)
+          }
+      })
     .catch(error => console.log(error));
   console.log(name);
 }
 
-function searchCountries(arr){
-  return createShortMarkup (arr)
-  console.log(arr.length);
-  // const amountCountries = arr.length;
-  // if (amountCountries > 10){
-  //   Notiflix.Notify.warning('Too many matches found. Please enter a more specific name.');
-  // } else if (amountCountries === 1) {
-  //   return createFullMarkup(countries)
-  // } else if (amountCountries >1 && amountCountries <= 10){
-  //   return createShortMarkup(countries)
-  // }
-}
 
 function createShortMarkup(arr) {
   const markup = arr
