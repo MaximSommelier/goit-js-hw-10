@@ -27,3 +27,8 @@ body {
 .country-name {
   margin-left: 15px;
 }
+
+.info-country {
+  list-style: none;
+  
+}

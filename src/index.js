@@ -12,18 +12,24 @@ input.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
 
 
 function onSearch(evt) {
-  evt.preventDefault();
   const name = evt.target.value.trim();
+  if (!name){
+    countryList.innerHTML = "";
+    countryInfo.innerHTML = "";
+    return
+  }
+
+  evt.preventDefault();
 
   fetchCountries(name)
     // .then(data => console.log(data))
-    .then(createLittleMarkup)
+    .then(createFullMarkup)
     .catch(error => console.log(error));
   console.log(name);
 }
 
 
-function createLittleMarkup(arr) {
+function createShortMarkup(arr) {
   const markup = arr
     .map(
       ({
@@ -50,7 +56,7 @@ function createFullMarkup(arr) {
         }) => `<div class="country">
         <img src="${svg}" width="50" height="25" alt="flag of ${svg}">
         <h2 class="country-name">${official}</h2>
-        <ul>
+        <ul class="info-country">
           <li><span>Capital</span>: ${capital}</li>
           <li><span>Population</span>: ${population}</li>
           <li><span>Languages</span>: ${Object.values(languages)}</li>
